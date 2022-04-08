@@ -1,72 +1,96 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Laravel Assignment - Address Book Application (07/04/22)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Requirements
+Create a very basic address book application using Laravel. The application should <mark>show a listing of current address book entries (contacts), as well as having a way to edit existing contacts, create new contacts, and delete contacts.</mark> You should use a MySQL database (you will need to create the laravel migrations) and store the following data for a contact:
+- Name
+- Email
+- Phone number
+- Date of birth
+- Physical address
 
-## About Laravel
+You should create your own git repository for this project and commit your progress often as you work, to show your process. Please provide the URL to this repository when you are happy to share your progress.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Optional ideas beyond the minimum requirements:**
+- You could use a laravel starter kit (i.e. Laravel jetstream with VueJS - https://laravel.com/docs/9.x/starter-kits)
+- <mark> You could implement an authentication flow to keep the application secure </mark> (tip: laravel jetstream and other starter kits come with this baked in)
+- You could use laravel sail for an easier local development environment for PHP and MySQL
+- You could utilise Tailwind CSS and TailwindUI for a better aesthetic
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Thoughts before starts
 
-## Learning Laravel
+* CRUD function needed
+* MySQL database
+* UI wireframe
+* Login page
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Current envir
+* Laravel 
+* php 8.0
+* MySQL 8.0.15
+* 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+discussed a built web crwaler platform - Rstudio and its packages which uses to connect database. [R studio server](http://40.78.152.220:8787/)
+usr: rstudio
+pwd: rstudio
 
-## Laravel Sponsors
+```php=8.0
+# R
+library(DBI)
+library(RMySQL)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+con <- dbConnect(RMySQL::MySQL(), 
+    host = "ara-mysql.mysql.database.azure.com",
+    user = "ara_user@ara-mysql", 
+    password = "Test1234",
+    dbname = "uml_resource"
+)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
+dbListTables(con)
+dbListFields(con, "webCrawler")
+dbReadTable(con, "webCrawler")
+```
 
-## Contributing
+**Done:**
+* Can scrape a website and convert its content to an transferable format for database.
+* Can create a table in MySQL by directly parsing the data in R studio.
+* Run a prototype application by using Shiny package in R studio.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**Problem:**
+* How to display/use data? 
+* 1. Embed the Shiny application to React or .NET website.
+* 2. Passing the stored data to website by 
+* legltimate or not.
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
+## Achievement and Issues
+- [ ] Which method we use to collect data, collecting data through API or using web crawler?
+- [ ] Where do we put the data, local MSSQL, Azure cloud-based SQL server or other tech.
+- [ ]  A project design diagram/flow chart/mindmpa is considerably required. The following is an example.![](https://i.imgur.com/pYrmrev.png)
 
-## License
+- [ ] A list of what tools or techniques we use, and what are they used for.
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+---
+## A temporary List of Tools or Techniques
+format: [Name, Simple description]
+
+* [**Postman**, a platform for API development](https://www.postman.com/)
+* **Front end language**: React or Vue
+* **Backend language**: MS SQL, .NET Core
+* **Web Crawler**: Python
+
+
+---
+# Resource
+format: [Website, Title]
+**Online Course**
+1. [Lynda, Building React and ASP.NET MVC 5 Applications](https://www.lynda.com/ASP-NET-tutorials/Building-React-ASP-NET-MVC-5-Applications/751345-2.html)
+2. [Microsoft, Virtual Training Days](https://www.microsoft.com/en-ca/sites/microsoft-training-days/azure.aspx)
+3. [Python, Web Crawler Fundamental tutorial(Chinese)](https://drive.google.com/drive/folders/1Io8yX4F2p4TM4wdLD0O94EHefhcHawI3?usp=sharing)
+4. [Coursera, Free cources for Uni. students](https://www.coursera.org/for-university-and-college-students?utm_source=link&utm_medium=share&utm_campaign=social_icons_freecourseraforstudents)
+
+**Useful Reference**
+1. [Microsoft, Tutorial: Create a web API with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio)
+2. [Microsoft, Quickstart: Use .NET Core (C#) to query a database in Azure SQL Database or Azure SQL Managed Instance](https://docs.microsoft.com/en-us/azure/azure-sql/database/connect-query-dotnet-core)
